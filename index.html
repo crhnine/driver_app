@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+   
+
+
+    
+
+    <button onclick="startDay()" id="startDay" style="width:200px;height:50px;background-color:green;color:white;display:inline-block;">Start the Day</button>
+    <p id="day_display" style="width:100px;height:100px;color:black;background-color:grey;">
+
+
+    </p>
+
+
+</body>
+
+
+</html>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js">
+
+    $('#startDay').click(function(){
+
+        $(this).css("display" , "none");
+        $('#endDay').css("display" , "inline");
+        $('#endDayBtn').css("display" , "inline");
+
+
+        var d = new Date();
+        var year = d.getFullYear();
+        var day = d.getDate();
+        var month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+        var month_reset = month[d.getMonth()];
+
+        $('#year').val(year);
+        $('#day').val(day);
+        $('#month').val(month_reset);
+
+
+        var htmlString = '<div class="day_grouping"><div class="date_heading">Month:  </div>' + month_reset + '</div><div class="day_grouping"><div class="date_heading">Day:  </div>' + day + '</div><div class="day_grouping"><div class="date_heading">Year:  </div>' + year + '</div></div>';
+        $('.day_display').html(htmlString);
+    });
+
+    $('#endDayBtn').click(function(){
+
+        $('#endDayBtn').css("display" , "none");
+        $('#startDay').css("display" , "inline");
+        $('#endDay').css("display" , "none");
+    });
+
+  
+    var form = $('#dataForm');
+    form.submit(function (ev) {
+        ev.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: 'form_submit.php',
+            data: {
+
+                month: month,
+                day: day,
+                year: year,
+                miles_begin: miles_begin,
+                payPerRun: payPerRun,
+                startingAmount: startingAmount,
+                miles_end: miles_end,
+                total_cash: total_cash
+
+            }
+
+        }).done(function(dataString){
+
+            alert("operation successful");
+        }).fail(function(dataString){
+
+            alert("operation unsuccessful");
+        });
+
+    });         
+ 
+
+  
+</script>
