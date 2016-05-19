@@ -3,34 +3,146 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Delivery Driver App</title>
+    <!-- Do not add code between these script tags -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <!-------------------------------------------  -->
+    <script>
+   $(function () {
+        $('#dataForm').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'form_submit.php',
+                data: $('#dataForm').serialize(),
+                success: function () {
+                    alert('form was submitted');
+                }
+            });
+        });
+    });
+    </script>
+    <title>Delivery Driver App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="layout/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="layout/index.css" rel="stylesheet" type="text/css" />
+    <link href="layout/mobile.css" rel="stylesheet" type="text/css" />
+    <link href="layout/custom.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div style="width:100%;height:35px;background-color:#f85708;border-bottom:1px solid white;">
+        <!--  Hello username float right  -->
+    </div>
+    <div class="header_container">
+        <p style="margin:0px;width:100%;text-align:center">
+            Driver-B-App
+        </p>
+    </div>
+    <div id="mobile_container">
 
-   
+        <div id="information_block">
+
+            <div class="btn_container" style="">
+                <button id="startDay" style="">Start the Day</button>
+            </div>
+
+            <div id="endDay" style="width:100%;display:none;">
+                <div id="day_display" class="day_display" style="">
+
+                </div>
+                <div id="cont_btn" class="btn_container" style="display:none;width:95%;margin:0 auto;margin-top:25px;">
+                    <button id="continue" class="cont_btn">Continue</button>
+                </div>
+
+                <div class="endBtn btn_container" style="width:95%;margin:0 auto;">
+                    <button id="endDayBtn" style="margin:0 auto;display:none;">End the Day</button>
+                </div>
+                <!--   -->
+
+                <form id="dataForm" class="dataForm">
+                    <!-- STEP ONE--->
+                    <!-- Starting the day -->
+                    <!-- Current Date is passed to these inputs and sent off to the server  -->
+                    <div id="step_one" style="width:60%;margin:0 auto;display:none;text-align:center;">
+                        <input id="month" type="hidden" name="month" />
+                        <input id="day" type="hidden" name="day" />
+                        <input id="year" type="hidden" name="year" />
+                        <!------------------------------------------------------------------------>
+                        <div class="input_field01">
+                            <label for="miles_begin" id="miles_begin_label">Starting Miles</label><br />
+                            <input id="miles_begin" name="miles_begin" style="display:inline-block" /><br /><br />
+
+                            <label for="payPerRun" id="payPerRun_label">$ Per Run</label><br />
+                            <input id="payPerRun" name="payPerRun" style="display:inline-block" /><br /><br />
+
+                            <label for="startingAmount" id="startingAmount_label">Starting Cash on Hand</label><br />
+                            <input id="startingAmount" name="startingAmount" style="display:inline-block" /><br /><br />
+                        </div>
+                    </div>
+                    <!-- ------------------------------------------------------------------ -->
+                    <!-- STEP TWO -->
+                    <!-- TO DO: BUILD THE + AND - FEATURE SO DRIVERS CAN KEEP TRACK OF HOW MANY RUNS THEY HAVE Chris Hodges -->
+                    <!-- TO DO: BUILD THE + AND - ALIGN ALL OF THE ELEMENTS SO THAT THEY MAKE SENSE AESTHETICALLY CORRECT ON THE PAGE Chris Hodges -->
+                    <!-- TO DO: BUILD THE + AND - ADD DESIGN TO LABELS AND INPUTS Chris Hodges -->
+                    <div id="step_two" style="width:60%;margin:0 auto;display:none;text-align:center;">
+                     
+                            <div class="count_container">
+                                <div>
+                                    <img src="img/minus.png" id="remove_run" style="width:10%;height:30px;margin-right:30px;margin-top:10px;" />
 
 
-    
-
-    <button onclick="startDay()" id="startDay" style="width:200px;height:50px;background-color:green;color:white;display:inline-block;">Start the Day</button>
-    <p id="day_display" style="width:100px;height:100px;color:black;background-color:grey;">
+                                    <input type="text" value="1" style="width:15%;height:30px;margin-right:30px;" />
 
 
-    </p>
+                                    <img src="img/plus.png" id="add_run" style="width:10%;height:30px;margin-top:10px;" />
+                                </div>
+                            </div>
+              
+                    </div> 
+                    <!-- -->
+                    <!-- STEP THREE -->
+                    <!-- Ending the Day -->
+
+                    <div id="step_three" style="display:none;width:60%;margin:0 auto;">
+                        <label id="miles_end_label" for="miles_end" style="display:none">Ending Miles</label><br />
+                        <input id="miles_end" name="miles_end" style="display:none" /><br /><br />
+
+                        <label id="total_cash_label" for="total_cash" style="display:none">Money Made Minus Hourly for the Shift</label><br />
+                        <input id="total_cash" name="total_cash" style="display:none" /><br /><br />
+                        <!-- ------------------------------------------------------------------ -->
+
+                        <button type="submit" name="submit" value="submit" id="submitBtn" style="display:none;">Submit</button>
+                    </div>
+                </form>
+                <!--   -->
+
+                <form id="tips_form" style="width:50%;margin:0 auto;display:none;text-align:center;">
+                    <div class="count_container" style="margin-top:20px;">
+                        <label for="tip_amount" style="margin:0 auto;">Tip Amount for Run </label><br />
+                        <input type="text" name="tip_amount" id="tip amount" /><br />
 
 
-</body>
+                        <button type="submit" name="submit_tips" value="save_tips" style="width:150px;height:30px;margin-top:20px;">Save tip for run </button>
+                    </div>
+                </form>
+            </div>
 
+        </div>
+    </div>
+    <div>
+    </div>
+    </body>
 
-</html>
-<script src="https://code.jquery.com/jquery-1.12.3.min.js">
+</html> 
 
-    $('#startDay').click(function(){
-
-        $(this).css("display" , "none");
-        $('#endDay').css("display" , "inline");
-        $('#endDayBtn').css("display" , "inline");
-
+<script type="text/javascript">
+    $('#startDay').click(function () {
+       $(this).css("display", "none");
+       $('form').trigger('reset');
+       $('#endDay').css("display", "block");
+       $('#step_one').css("display", "block");
+       $('#cont_btn').css("display", "block");
+       $('#continue').css("display", "block");
 
         var d = new Date();
         var year = d.getFullYear();
@@ -54,48 +166,44 @@
         $('#day').val(day);
         $('#month').val(month_reset);
 
-
         var htmlString = '<div class="day_grouping"><div class="date_heading">Month:  </div>' + month_reset + '</div><div class="day_grouping"><div class="date_heading">Day:  </div>' + day + '</div><div class="day_grouping"><div class="date_heading">Year:  </div>' + year + '</div></div>';
         $('.day_display').html(htmlString);
+    });
+
+    $('#continue').click(function(){
+
+        $('#continue').css("display", "none");
+        $('#step_one').css("display", "none");
+        $('#step_two').css("display", "block");
+        $('#tips_form').css("display", "block");
+        $('#endDayBtn').css("display" , "block");
+        $('#day_display').css("display" , "none");
+        $('#miles_begin_label').css("display" , "none");
+        $('#miles_begin').css("display" , "none");
+        $('#payPerRun_label').css("display" , "none");
+        $('#payPerRun').css("display" , "none");
+        $('#startingAmount_label').css("display" , "none");
+        $('#startingAmount').css("display", "none");
+        
     });
 
     $('#endDayBtn').click(function(){
 
         $('#endDayBtn').css("display" , "none");
-        $('#startDay').css("display" , "inline");
-        $('#endDay').css("display" , "none");
+        $('#submitBtn').css("display", "block");
+        $('#step_two').css("display", "none");
+        $('#tips_form').css("display", "none");
+        $('#step_three').css("display", "block");
+        $('#miles_end_label').css("display" , "block");
+        $('#miles_end').css("display" , "block");
+        $('#total_cash_label').css("display" , "block");
+        $('#total_cash').css("display" , "block");
+
     });
 
-  
-    var form = $('#dataForm');
-    form.submit(function (ev) {
-        ev.preventDefault();
-        $.ajax({
-            type: 'GET',
-            url: 'form_submit.php',
-            data: {
+    $('#submitBtn').click(function(){
+    $('#endDay').css("display" , "none");
+    $('#startDay').css("display" , "block");
 
-                month: month,
-                day: day,
-                year: year,
-                miles_begin: miles_begin,
-                payPerRun: payPerRun,
-                startingAmount: startingAmount,
-                miles_end: miles_end,
-                total_cash: total_cash
-
-            }
-
-        }).done(function(dataString){
-
-            alert("operation successful");
-        }).fail(function(dataString){
-
-            alert("operation unsuccessful");
-        });
-
-    });         
- 
-
-  
+});
 </script>

@@ -12,7 +12,7 @@ $startingAmount = $_POST['startingAmount'];
 $miles_end = $_POST['miles_end'];
 $total_cash = $_POST['total_cash'];
 
-$sql_post = "INSERT INTO test (month, day, year, miles_begin, payPerRun, startingAmount, miles_end, total_cash) VALUES ('$month', '$day', '$year', '$miles_begin', '$payPerRun', '$startingAmount', '$miles_end', '$total_cash')";
+$sql_post = "INSERT INTO day_entry (month, day, year, miles_begin, payPerRun, startingAmount, miles_end, total_cash) VALUES ('$month', '$day', '$year', '$miles_begin', '$payPerRun', '$startingAmount', '$miles_end', '$total_cash')";
 $db_post = mysql_query($sql_post)or die('Query "' . $sql_post . '" failed: ' . mysql_error());
 
 ?>

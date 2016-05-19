@@ -6,6 +6,7 @@
         color:#1e1e1e;
     }
 
+
     div{
 
 
@@ -72,7 +73,7 @@
             height:50px;
             background-color:green;
             color:white;
-            display:inline-block;
+            display:block;
             margin:0px auto;
             border:none;
         }
@@ -114,6 +115,25 @@
             margin-right:10px;
 
             
+        }
+
+        .cont_btn{
+
+            width:100px;
+            margin:0 auto;
+        }
+
+        .input_field01{
+
+            margin-top:20px;
+
+        }
+
+        .count_container{
+
+            width:65%;
+            margin:0 auto;
+
         }
 
         #endDayBtn{
