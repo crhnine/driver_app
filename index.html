@@ -78,6 +78,7 @@
                     <!-- Starting the day -->
                     <!-- Current Date is passed to these inputs and sent off to the server  -->
                     <div id="step_one" style="width:60%;margin:0 auto;display:none;text-align:center;">
+                        <input type="text" name="form_identification" id="form_identification_01" value="one" hidden />
                         <input id="month" type="hidden" name="month" />
                         <input id="day" type="hidden" name="day" />
                         <input id="year" type="hidden" name="year" />
@@ -109,7 +110,7 @@
                                     </div>
                                     <button id="remove_run" class="tip_tracker"  style="margin-right:20%;"><img src="img/minus.png"  /></button>
 
-                                    <input type="number" id="runCountInput" value="1" hidden />
+                                    <input type="number" name="run_count" id="runCountInput" value="1" hidden />
                                     <div id="run_count" class="run_count" style="width:20%;height:80px;margin-right:20%;float:left;"></div>
 
                                     <button id="add_run" class="tip_tracker"><img src="img/plus.png" /></button>
@@ -137,8 +138,12 @@
 
                 <form id="tips_form" style="width:100%;margin:0 auto;margin-top:10px;display:none;">
                     <div class="count_container" style="width:60%;margin-top:20px;margin:0 auto;padding-top:85px;text-align:center;">
+                        <input id="month_02" hidden name="month_02" />
+                        <input id="day_02" hidden name="day_02" />
+                        <input id="year_02" hidden name="year_02" />
+                        <input type="text" name="form_identification" id="form_identification_02" value="two" hidden />
                         <label for="tip_amount" id="tip_amount_label" >Tip for this run </label><br />
-                        <input type="number" id="runCountSpecific" hidden value="1" />
+                        <input type="number" name="run_count" id="runCountSpecific" hidden value="1" />
                         <input type="text" name="tip_amount" id="tip_amount" class="tip_amount" />
 
 
@@ -161,6 +166,16 @@
        $('form').trigger('reset');
        $('#endDay').css("display", "block");
        $('#step_one').css("display", "block");
+
+       $('#day_display').css("display", "block");
+       $('#miles_begin_label').css("display", "block");
+       $('#miles_begin').css("display", "block");
+       $('#payPerRun_label').css("display", "block");
+       $('#payPerRun').css("display", "block");
+       $('#startingAmount_label').css("display", "block");
+       $('#startingAmount').css("display", "block");
+
+
        $('#cont_btn').css("display", "block");
        $('#continue').css("display", "block");
 
@@ -186,6 +201,10 @@
         $('#day').val(day);
         $('#month').val(month_reset);
 
+        $('#year_02').val(year);
+        $('#day_02').val(day);
+        $('#month_02').val(month_reset);
+
         var htmlString = '<div class="day_grouping"><div class="date_heading">Month:  </div>' + month_reset + '</div><div class="day_grouping"><div class="date_heading">Day:  </div>' + day + '</div><div class="day_grouping"><div class="date_heading">Year:  </div>' + year + '</div></div>';
         $('.day_display').html(htmlString);
     });
@@ -194,16 +213,19 @@
 
         $('#continue').css("display", "none");
         $('#step_one').css("display", "none");
+        $('#day_display').css("display", "none");
+        $('#miles_begin_label').css("display", "none");
+        $('#miles_begin').css("display", "none");
+        $('#payPerRun_label').css("display", "none");
+        $('#payPerRun').css("display", "none");
+        $('#startingAmount_label').css("display", "none");
+        $('#startingAmount').css("display", "none");
+
+
         $('#step_two').css("display", "block");
         $('#tips_form').css("display", "block");
         $('#endDayBtn').css("display" , "block");
-        $('#day_display').css("display" , "none");
-        $('#miles_begin_label').css("display" , "none");
-        $('#miles_begin').css("display" , "none");
-        $('#payPerRun_label').css("display" , "none");
-        $('#payPerRun').css("display" , "none");
-        $('#startingAmount_label').css("display" , "none");
-        $('#startingAmount').css("display", "none");
+
 
         var run_count = $('#runCountInput').val();
         $('.run_count').html(run_count);
@@ -246,10 +268,11 @@
 
     $('#endDayBtn').click(function(){
 
-        $('#endDayBtn').css("display" , "none");
-        $('#submitBtn').css("display", "block");
+        $('#endDayBtn').css("display", "none");
         $('#step_two').css("display", "none");
         $('#tips_form').css("display", "none");
+
+        $('#submitBtn').css("display", "block");
         $('#step_three').css("display", "block");
         $('#miles_end_label').css("display" , "block");
         $('#miles_end').css("display" , "block");
@@ -259,8 +282,16 @@
     });
 
     $('#submitBtn').click(function(){
-    $('#endDay').css("display" , "none");
-    $('#startDay').css("display" , "block");
+ 
+        $('#startDay').css("display", "block");
+
+
+
+    $('#cont_btn').css("display", "none");
+    $('#step_one').css("display", "none");
+    $('#step_two').css("display", "none");
+    $('#step_three').css("display", "none");
+    $('#tips_form').css("display", "none");
 
 });
 </script>
