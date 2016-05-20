@@ -20,7 +20,21 @@
                 }
             });
         });
-    });
+   });
+
+   $(function () {
+       $('#tips_form').on('submit', function (e) {
+           e.preventDefault();
+           $.ajax({
+               type: 'post',
+               url: 'form_submit.php',
+               data: $('#tips_form').serialize(),
+               success: function () {
+                   alert('form was submitted');
+               }
+           });
+       });
+   });
     </script>
     <title>Delivery Driver App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,14 +101,19 @@
                     <div id="step_two" style="width:60%;margin:0 auto;display:none;text-align:center;">
                      
                             <div class="count_container">
-                                <div>
-                                    <img src="img/minus.png" id="remove_run" style="width:10%;height:30px;margin-right:30px;margin-top:10px;" />
+                                <div style="width:100%;margin:0 auto;margin-bottom:20px;">
+
+                                    <div id="display_value" class="display_value">
 
 
-                                    <input type="text" value="1" style="width:15%;height:30px;margin-right:30px;" />
+                                    </div>
+                                    <button id="remove_run" class="tip_tracker"  style="margin-right:20%;"><img src="img/minus.png"  /></button>
 
+                                    <input type="number" id="runCountInput" value="1" hidden />
+                                    <div id="run_count" class="run_count" style="width:20%;height:80px;margin-right:20%;float:left;"></div>
 
-                                    <img src="img/plus.png" id="add_run" style="width:10%;height:30px;margin-top:10px;" />
+                                    <button id="add_run" class="tip_tracker"><img src="img/plus.png" /></button>
+                                 
                                 </div>
                             </div>
               
@@ -116,13 +135,14 @@
                 </form>
                 <!--   -->
 
-                <form id="tips_form" style="width:50%;margin:0 auto;display:none;text-align:center;">
-                    <div class="count_container" style="margin-top:20px;">
-                        <label for="tip_amount" style="margin:0 auto;">Tip Amount for Run </label><br />
-                        <input type="text" name="tip_amount" id="tip amount" /><br />
+                <form id="tips_form" style="width:100%;margin:0 auto;margin-top:10px;display:none;">
+                    <div class="count_container" style="width:60%;margin-top:20px;margin:0 auto;padding-top:85px;text-align:center;">
+                        <label for="tip_amount" id="tip_amount_label" >Tip for this run </label><br />
+                        <input type="number" id="runCountSpecific" hidden value="1" />
+                        <input type="text" name="tip_amount" id="tip_amount" class="tip_amount" />
 
 
-                        <button type="submit" name="submit_tips" value="save_tips" style="width:150px;height:30px;margin-top:20px;">Save tip for run </button>
+                        <button type="submit" id="submit_tips" name="submit_tips" value="save_tips" style="width:200px;height:30px;margin-top:20px;">Save tip for run </button>
                     </div>
                 </form>
             </div>
@@ -184,8 +204,45 @@
         $('#payPerRun').css("display" , "none");
         $('#startingAmount_label').css("display" , "none");
         $('#startingAmount').css("display", "none");
+
+        var run_count = $('#runCountInput').val();
+        $('.run_count').html(run_count);
+        $('#runCountSpecific').val(run_count);
+           
+    });
+
+    $('#add_run').click(function (e) {
+        e.preventDefault();
+        var val = $('#runCountInput').val();
+
+        var new_val = parseInt($('#runCountInput').val()) + 1;
+        var new_val = parseInt(new_val);
+        var value_string = '<div>' + new_val + '</div>';
+        $('#runCountInput').val(new_val);
+        $('.run_count').html(value_string);
+        $('#runCountSpecific').val(new_val);
         
     });
+
+
+    $('#remove_run').click(function (e) {
+        e.preventDefault();
+        var val = $('#runCountInput').val();
+
+        var new_val = parseInt($('#runCountInput').val()) - 1;
+        var new_val = parseInt(new_val);
+        if(new_val <= 0){
+            new_val = 1;
+            new_val = parseInt(new_val);
+        }
+        var value_string = '<div>' + new_val + '</div>';
+        $('#runCountInput').val(new_val);
+        $('.run_count').html(value_string);
+        $('#runCountSpecific').val(new_val);
+    });
+
+    
+
 
     $('#endDayBtn').click(function(){
 
