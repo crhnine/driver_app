@@ -21,20 +21,22 @@
             });
         });
    });
-
-   $(function () {
-       $('#tips_form').on('submit', function (e) {
-           e.preventDefault();
-           $.ajax({
-               type: 'post',
-               url: 'form_submit.php',
-               data: $('#tips_form').serialize(),
-               success: function () {
-                   alert('form was submitted');
-               }
-           });
-       });
-   });
+    </script>
+<!--  EACH AJAX REQUEST NEEDS TO BE IN ITS OWN SEPARATE SCRIPT-->
+    <script>
+        $(function () {
+            $('#tips_form').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    url: 'tips_form_submit.php',
+                    data: $('#tips_form').serialize(),
+                    success: function () {
+                        alert('form was submitted');
+                    }
+                });
+            });
+        });
     </script>
     <title>Delivery Driver App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -142,8 +144,10 @@
                         <input id="day_02" hidden name="day_02" />
                         <input id="year_02" hidden name="year_02" />
                         <input type="text" name="form_identification" id="form_identification_02" value="two" hidden />
+
+                        <input type="number" name="run_count01" id="runCountSpecific" hidden value="" />
+
                         <label for="tip_amount" id="tip_amount_label" >Tip for this run </label><br />
-                        <input type="number" name="run_count" id="runCountSpecific" hidden value="1" />
                         <input type="text" name="tip_amount" id="tip_amount" class="tip_amount" />
 
 
@@ -157,9 +161,7 @@
     <div>
     </div>
     </body>
-
 </html> 
-
 <script type="text/javascript">
     $('#startDay').click(function () {
        $(this).css("display", "none");
@@ -169,11 +171,11 @@
 
        $('#day_display').css("display", "block");
        $('#miles_begin_label').css("display", "block");
-       $('#miles_begin').css("display", "block");
+       $('#miles_begin').css("display", "inline-block");
        $('#payPerRun_label').css("display", "block");
-       $('#payPerRun').css("display", "block");
+       $('#payPerRun').css("display", "inline-block");
        $('#startingAmount_label').css("display", "block");
-       $('#startingAmount').css("display", "block");
+       $('#startingAmount').css("display", "inline-block");
 
 
        $('#cont_btn').css("display", "block");
@@ -196,6 +198,7 @@
         month[10] = "November";
         month[11] = "December";
         var month_reset = month[d.getMonth()];
+        var month_reset_02 = month[d.getMonth()];
 
         $('#year').val(year);
         $('#day').val(day);
@@ -203,7 +206,7 @@
 
         $('#year_02').val(year);
         $('#day_02').val(day);
-        $('#month_02').val(month_reset);
+        $('#month_02').val(month_reset_02);
 
         var htmlString = '<div class="day_grouping"><div class="date_heading">Month:  </div>' + month_reset + '</div><div class="day_grouping"><div class="date_heading">Day:  </div>' + day + '</div><div class="day_grouping"><div class="date_heading">Year:  </div>' + year + '</div></div>';
         $('.day_display').html(htmlString);
@@ -220,7 +223,6 @@
         $('#payPerRun').css("display", "none");
         $('#startingAmount_label').css("display", "none");
         $('#startingAmount').css("display", "none");
-
 
         $('#step_two').css("display", "block");
         $('#tips_form').css("display", "block");
@@ -246,7 +248,6 @@
         
     });
 
-
     $('#remove_run').click(function (e) {
         e.preventDefault();
         var val = $('#runCountInput').val();
@@ -262,9 +263,6 @@
         $('.run_count').html(value_string);
         $('#runCountSpecific').val(new_val);
     });
-
-    
-
 
     $('#endDayBtn').click(function(){
 
@@ -285,13 +283,11 @@
  
         $('#startDay').css("display", "block");
 
-
-
-    $('#cont_btn').css("display", "none");
-    $('#step_one').css("display", "none");
-    $('#step_two').css("display", "none");
-    $('#step_three').css("display", "none");
-    $('#tips_form').css("display", "none");
+        $('#cont_btn').css("display", "none");
+        $('#step_one').css("display", "none");
+        $('#step_two').css("display", "none");
+        $('#step_three').css("display", "none");
+        $('#tips_form').css("display", "none");
 
 });
 </script>
