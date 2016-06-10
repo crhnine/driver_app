@@ -1,15 +1,22 @@
 <?php
 session_start();
-include 'include/connect.php';
+include '../include/connect.php';
 $db = new mysqli($host, $username, $password, 'driver_app');
-
-$current_login = $_SESSION['username'];
+$current_login = $_SESSION["username"];
 echo $current_login;
 
-if($db->connect_errno > 0){
-    die('Unable to connect to database [' . $db->connect_error . ']');
-}
+//if($current_login === Null){
 
+//header('Location: ../index.php');
+//}
+
+//if($db->connect_errno > 0){
+//    die('Unable to connect to database [' . $db->connect_error . ']');
+//}
+
+//TO DO: NEED TO SWITCH DATA.PHP TO CONTENT AND CHANGE LOGIN.PHP TO INDEX.PHP SO THAT LOGIN WILL BE HIT FIRST
+       //LOOK AS THIS FILE BEING IN CONTENT FOLDER. CHANGE DIRECTORY REFERENCES TO PROPER POINTERS
+//TO DO: BE SURE TO WRITE FUNCTIONALITY THAT ALLOWS TESTING OF LOGIN AND ACTUAL LOGOUT WITH SESSION UNSET
 ?>
 <!DOCTYPE html>
 
@@ -26,7 +33,7 @@ if($db->connect_errno > 0){
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: 'submissions/form_submit.php',
+                url: '../submissions/form_submit.php',
                 data: $('#dataForm').serialize(),
                 success: function () {
                     alert('form was submitted');
@@ -42,7 +49,7 @@ if($db->connect_errno > 0){
                 e.preventDefault();
                 $.ajax({
                     type: 'post',
-                    url: 'submissions/tips_form_submit.php',
+                    url: '../submissions/tips_form_submit.php',
                     data: $('#tips_form').serialize(),
                     success: function () {
                         alert('form was submitted');
@@ -53,20 +60,18 @@ if($db->connect_errno > 0){
     </script>
     <title>Delivery Driver App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="layout/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="layout/index.css" rel="stylesheet" type="text/css" />
-    <link href="layout/mobile.css" rel="stylesheet" type="text/css" />
-    <link href="layout/custom.css" rel="stylesheet" type="text/css" />
+    <link href="../layout/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="../layout/index.css" rel="stylesheet" type="text/css" />
+    <link href="../layout/mobile.css" rel="stylesheet" type="text/css" />
+    <link href="../layout/custom.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div style="width:100%;height:35px;background-color:#f85708;border-bottom:1px solid white;">
-        <!--  Hello username float right  -->
-    </div>
-    <div class="header_container">
-        <p style="margin:0px;width:100%;text-align:center">
-            Driver-B-App
-        </p>
-    </div>
+
+    <?php
+
+        include '../include/header.php';
+
+    ?>
     
     <div id="mobile_container">
 
@@ -123,12 +128,12 @@ if($db->connect_errno > 0){
 
 
                                     </div>
-                                    <button id="remove_run" class="tip_tracker"  style="margin-right:20%;"><img src="img/minus.png"  /></button>
+                                    <button id="remove_run" class="tip_tracker"  style="margin-right:20%;"><img src="../img/minus.png"  /></button>
 
                                     <input type="number" name="run_count" id="runCountInput" value="1" hidden />
                                     <div id="run_count" class="run_count" style="width:20%;height:80px;margin-right:20%;float:left;"></div>
 
-                                    <button id="add_run" class="tip_tracker"><img src="img/plus.png" /></button>
+                                    <button id="add_run" class="tip_tracker"><img src="../img/plus.png" /></button>
     
                                 </div>
                             </div>
@@ -173,7 +178,7 @@ if($db->connect_errno > 0){
                     </div>
                     <!-- TO DO: DISPLAY THROUGH AJAX DATABASE ENTRIES BASED ON USER LOGGED IN --> 
                     <div class="current_statistics">
-                         <?php include 'content/daily_tips.php';  ?>
+                         <?php include 'daily_tips.php';  ?>
                     </div>
                 </form>
             </div>
