@@ -5,17 +5,8 @@ $db = new mysqli($host, $username, $password, 'driver_app');
 $current_login = $_SESSION["username"];
 echo $current_login;
 
-//if($current_login === Null){
 
-//header('Location: ../index.php');
-//}
 
-//if($db->connect_errno > 0){
-//    die('Unable to connect to database [' . $db->connect_error . ']');
-//}
-
-//TO DO: NEED TO SWITCH DATA.PHP TO CONTENT AND CHANGE LOGIN.PHP TO INDEX.PHP SO THAT LOGIN WILL BE HIT FIRST
-       //LOOK AS THIS FILE BEING IN CONTENT FOLDER. CHANGE DIRECTORY REFERENCES TO PROPER POINTERS
 //TO DO: BE SURE TO WRITE FUNCTIONALITY THAT ALLOWS TESTING OF LOGIN AND ACTUAL LOGOUT WITH SESSION UNSET
 ?>
 <!DOCTYPE html>
