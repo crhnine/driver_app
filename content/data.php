@@ -3,9 +3,6 @@ session_start();
 include '../include/connect.php';
 $db = new mysqli($host, $username, $password, 'driver_app');
 $current_login = $_SESSION["username"];
-echo $current_login;
-
-
 
 //TO DO: BE SURE TO WRITE FUNCTIONALITY THAT ALLOWS TESTING OF LOGIN AND ACTUAL LOGOUT WITH SESSION UNSET
 ?>
@@ -43,11 +40,25 @@ echo $current_login;
                     url: '../submissions/tips_form_submit.php',
                     data: $('#tips_form').serialize(),
                     success: function () {
-                        alert('form was submitted');
+                        $("#current_statistics_post").html('<div class="tips_stats"><div class="tips_runs">'+ $("#runCountSpecific").val() +'</div><div class="tips_ref_number">'+ $("#ref_number").val() +'</div><div class="tips_amount">'+ $("#tip_amount").val() +'</div></div>')
                     }
                 });
             });
         });
+    </script>
+    <script type="text/javascript">
+            $(function () {
+            $('#tips_form').on('submit', function (){
+
+           $.ajax({
+                    type: "GET",
+                    url: "daily_tips.php",
+                    dataType: "html",
+                    success: function (response) { $("#current_statistics").html(response); }
+
+                })
+            });
+              });
     </script>
     <title>Delivery Driver App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -109,15 +120,13 @@ echo $current_login;
                     <!-- ------------------------------------------------------------------ -->
                     <!-- STEP TWO -->
 
-
                     <div id="step_two" style="width:60%;margin:0 auto;display:none;text-align:center;">
                      
                             <div class="count_container">
                                 <div style="width:100%;margin:0 auto;margin-bottom:20px;">
 
                                     <div id="display_value" class="display_value">
-
-
+                                    
                                     </div>
                                     <button id="remove_run" class="tip_tracker"  style="margin-right:20%;"><img src="../img/minus.png"  /></button>
 
@@ -130,7 +139,6 @@ echo $current_login;
                             </div>
 
                     </div> 
-
 
                     <!-- -->
                     <!-- STEP THREE -->
@@ -167,9 +175,19 @@ echo $current_login;
 
                         <button type="submit" id="submit_tips" name="submit_tips" value="save_tips" style="width:200px;height:30px;margin-top:20px;">Save tip for run </button>
                     </div>
-                    <!-- TO DO: DISPLAY THROUGH AJAX DATABASE ENTRIES BASED ON USER LOGGED IN --> 
-                    <div class="current_statistics">
-                         <?php include 'daily_tips.php';  ?>
+                    <!-- DISPLAY THROUGH AJAX DATABASE ENTRIES BASED ON USER LOGGED IN -->
+                    <div class="current_statistics_container">
+                    <div class="tips_stats"><div class="tips_runs">RUN</div><div class="tips_ref_number">TICKET NUMBER</div><div class="tips_amount">AMOUNT</div><</div>
+                    <div class="current_statistics_post" id="current_statistics_post">
+                    <!--
+                    SHOW NEWEST POST HERE
+                    -->
+                    </div> 
+                    <div class="current_statistics" id="current_statistics">
+                    <!--
+                    RETRIEVE OLDER POSTS FOR THE DAY FROM DATABASE AND SHOW HERE 
+                    -->
+                    </div>
                     </div>
                 </form>
             </div>

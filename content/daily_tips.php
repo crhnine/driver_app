@@ -1,7 +1,20 @@
 <?php
+
+
+session_start();
+include '../include/connect.php';
+$db = new mysqli($host, $username, $password, 'driver_app');
+$current_login = $_SESSION["username"];
+
+
+$tips_month = date(F);
+$tips_day = date(j);
+$tips_year = date(Y);
+
+
     $sql = <<<SQL
     SELECT *
-    FROM `tip_per_run`
+    FROM `tip_per_run` WHERE username = '$current_login' AND month = '$tips_month' AND day = '$tips_day' AND year = '$tips_year' ORDER BY id DESC
 SQL;
 
 if(!$result = $db->query($sql)){
@@ -12,9 +25,9 @@ if(!$result = $db->query($sql)){
 
 while($row = $result->fetch_assoc()){
 
-    echo '<div style="width:100%;height:40px;margin-top:30px;color:white;background-color:grey;padding-top:11px;font-weight:700;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;"><div style="float:left;width:15%;box-sizing:border-box;padding-left:2%">RUN:' . $row['run_count'] . '</div>';
-    echo '<div style="float:left;width:40%;box-sizing:border-box;padding-left:2%;">TICKET NUMBER: ' . $row['ref_number'] . '</div>';
-    echo '<div style="float:left;width:35%;box-sizing:border-box;padding-left:2%;">TIP AMOUNT: ' . $row['tip_amount'] . '</div></div>';
+    echo '<div class="tips_stats"><div class="tips_runs">' . $row['run'] . '</div>';
+    echo '<div class="tips_ref_number">' . $row['ref_number'] . '</div>';
+    echo '<div class="tips_amount">' . $row['tip_amount'] . '</div></div>';
 }
 
 
