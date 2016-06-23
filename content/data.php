@@ -3,7 +3,12 @@ session_start();
 include '../include/connect.php';
 $db = new mysqli($host, $username, $password, 'driver_app');
 $current_login = $_SESSION["username"];
-
+if($current_login === ""){
+header('Location: ../index.php?login_confirm=Please login to continue.');
+}
+else{
+$url = "lower_directory";
+}
 //TO DO: BE SURE TO WRITE FUNCTIONALITY THAT ALLOWS TESTING OF LOGIN AND ACTUAL LOGOUT WITH SESSION UNSET
 ?>
 <!DOCTYPE html>
@@ -177,7 +182,7 @@ $current_login = $_SESSION["username"];
                     </div>
                     <!-- DISPLAY THROUGH AJAX DATABASE ENTRIES BASED ON USER LOGGED IN -->
                     <div class="current_statistics_container">
-                    <div class="tips_stats"><div class="tips_runs">RUN</div><div class="tips_ref_number">TICKET NUMBER</div><div class="tips_amount">AMOUNT</div><</div>
+                    <div class="tips_stats"><div class="tips_runs">RUN</div><div class="tips_ref_number">TICKET NUMBER</div><div class="tips_amount">AMOUNT</div></div>
                     <div class="current_statistics_post" id="current_statistics_post">
                     <!--
                     SHOW NEWEST POST HERE
@@ -194,12 +199,16 @@ $current_login = $_SESSION["username"];
 
         </div>
     </div>
-    <div>
+    <div class="footer_container" id="footer_container">
+    <?php 
+    include '../include/footer.php';
+    ?>
     </div>
     </body>
 </html> 
 <script type="text/javascript">
     $('#startDay').click(function () {
+       $('#footer_container').css("margin-top" , "50px");
        $(this).css("display", "none");
        $('form').trigger('reset');
        $('#endDay').css("display", "block");

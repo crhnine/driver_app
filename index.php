@@ -1,9 +1,10 @@
 <?php
 
-session_unset();
-session_destroy();
-
-?>
+$current_login = $_SESSION["username"];
+if($current_login === ""){
+$url = "top_directory";
+}
+ ?>
 <!DOCTYPE html>
 <script>
 </script>
@@ -17,7 +18,7 @@ session_destroy();
     <!--  ---------------------------------------------------  -->
     <!-- Do not add code between these script tags -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
-    <!-------------------------------------------  -->
+    <!--  ---------------------------------------------------  -->
     <link href="layout/normalize.css" rel="stylesheet" type="text/css" />
     <link href="layout/index.css" rel="stylesheet" type="text/css" />
     <link href="layout/mobile.css" rel="stylesheet" type="text/css" />
