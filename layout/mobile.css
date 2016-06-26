@@ -28,23 +28,7 @@
         box-shadow: 0px 10px 5px 0px rgba(131,125,125,0.25);
     }
 
-    .show_logout{
 
-        width:75px;
-        height:25px;
-        box-sizing:border-box;
-        background-color:#333333;
-        color:white;
-        font-weight:700;
-        float:left;
-        border:none;
-        margin-top:4.5px;
-        margin-left:10px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-
-    }
 
     .show_username{
 
@@ -62,9 +46,9 @@
         #mobile_container{
 
 
-        width:95%;
+        width:100%;
         margin:0px auto;
-        margin-top:35px;
+        margin-top:100px;
        
 
 
@@ -90,8 +74,14 @@
         .btn_container{
 
 
-            width:50%;
-            margin:0px auto;
+            width:100%;
+           
+        }
+        
+        .start_btn{
+
+
+            margin-top:100px;
         }
 
         #startDay{
@@ -100,7 +90,7 @@
             -moz-border-radius: 20px;
             border-radius: 20px;
             font-weight: 700;
-            width:200px;
+            width:50%;
             height:50px;
             background-color:green;
             color:white;
@@ -109,6 +99,24 @@
             border:none;
         }
 
+       .show_logout{
+
+
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            width:50%;
+            height:50px;
+            background-color:#333333;
+            color:white;
+            display:block;
+            margin:0px auto;
+            margin-top:4.5px;
+            border:none;
+
+    }
+
         #startDay:hover{
 
             background-color:#38CC38;
@@ -116,9 +124,8 @@
 
         .day_display{
 
-            width:95%;
+            width:100%;
             height:50px;
-            margin:0 auto;
         }
 
         .day_grouping{
@@ -150,8 +157,20 @@
 
         .cont_btn{
 
-            width:100px;
-            margin:0 auto;
+            width:50%;
+            height:50px;
+            float:right;
+            background-color:white;
+            border:none;
+        }
+
+        .previous_button{
+
+            width:50%;
+            height:50px;
+            float:left;
+            background-color:white;
+            border:none;
         }
 
         .run_count{
@@ -199,21 +218,11 @@
 
         #endDayBtn{
 
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            width:200px;
+            width:50%;
             height:50px;
-            background-color:red;
-            color:white;
+            float:right;
+            background-color:white;
             border:none;
-
-        }
-
-        #endDayBtn:hover{
-
-            background-color:#f72e2e;
 
         }
 
@@ -257,7 +266,7 @@
 
         }
 
-        #submit_button{
+        #submitBtn{
 
             -webkit-border-radius: 20px;
             -moz-border-radius: 20px;
@@ -272,6 +281,12 @@
             margin-top:25px;
             margin-left:2.4%;
 
+
+        }
+
+        #submitBtn:hover{
+
+            background-color:#f72e2e;
 
         }
 
@@ -319,11 +334,22 @@
             padding-left:2%;
         }
 
-        .footer_container{
+        #footer_container{
 
-            margin-top:100px;
-            height:230px;
+            margin-top:300px;
             width:100%;
+            height:100px;
+            background-color:#f85708;
+            color:white;
+            box-sizing:border-box;
+            
+        }
+
+        #footer_information_block{
+
+            width:100%;
+            height:100px;       
+            padding-top:20px;
         }
 
 }

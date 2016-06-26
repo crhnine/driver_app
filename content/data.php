@@ -84,20 +84,20 @@ $url = "lower_directory";
 
         <div id="information_block">
 
-            <div class="btn_container" style="">
-                <button id="startDay" style="">Start the Day</button>
+            <div class="btn_container start_btn">
+                <button id="startDay">Start the Day</button>
             </div>
 
-            <div id="endDay" style="width:100%;display:none;">
+            <div id="day_display_container" style="width:100%;display:none;">
                 <div id="day_display" class="day_display" style="">
 
                 </div>
                 <div id="cont_btn" class="btn_container" style="display:none;width:95%;margin:0 auto;margin-top:25px;">
-                    <button id="continue" class="cont_btn">Continue</button>
+                    <button id="previous_button" class="previous_button"><img src="../img/left_arrow.png" /></button><button id="continue" class="cont_btn"><img src="../img/right_arrow.png" /></button>
                 </div>
 
-                <div class="endBtn btn_container" style="width:95%;margin:0 auto;">
-                    <button id="endDayBtn" style="margin:0 auto;display:none;">End the Day</button>
+                <div class="endBtn btn_container" style="width:95%;margin:0 auto;margin-bottom:65px;">
+                    <button id="previous_button_02" class="previous_button" style="display:none;"><img src="../img/left_arrow.png" /></button><button id="endDayBtn" style="display:none;"><img src="../img/right_arrow.png" /></button>
                 </div>
                 <!--   -->
 
@@ -113,13 +113,13 @@ $url = "lower_directory";
                         <!------------------------------------------------------------------------>
                         <div class="input_field01">
                             <label for="miles_begin" id="miles_begin_label">Starting Miles</label><br />
-                            <input id="miles_begin" name="miles_begin" style="display:inline-block" /><br /><br />
+                            <input id="miles_begin" name="miles_begin" class="form_input" style="display:inline-block" /><br /><br />
 
                             <label for="payPerRun" id="payPerRun_label">$ Per Run</label><br />
-                            <input id="payPerRun" name="payPerRun" style="display:inline-block" /><br /><br />
+                            <input id="payPerRun" name="payPerRun" class="form_input" style="display:inline-block" /><br /><br />
 
                             <label for="startingAmount" id="startingAmount_label">Starting Cash on Hand</label><br />
-                            <input id="startingAmount" name="startingAmount" style="display:inline-block" /><br /><br />
+                            <input id="startingAmount" name="startingAmount" class="form_input" style="display:inline-block" /><br /><br />
                         </div>
                     </div>
                     <!-- ------------------------------------------------------------------ -->
@@ -128,7 +128,7 @@ $url = "lower_directory";
                     <div id="step_two" style="width:60%;margin:0 auto;display:none;text-align:center;">
                      
                             <div class="count_container">
-                                <div style="width:100%;margin:0 auto;margin-bottom:20px;">
+                                <div style="width:100%;margin:0 auto;margin-bottom:20px;margin-top:20px;">
 
                                     <div id="display_value" class="display_value">
                                     
@@ -150,11 +150,12 @@ $url = "lower_directory";
                     <!-- Ending the Day -->
 
                     <div id="step_three" style="display:none;width:60%;margin:0 auto;">
+                    <button id="previous_button_03" class="previous_button" type="button"><img src="../img/left_arrow.png" /></button><div class="placeholder_container" style="width:50%;height:50px;float:right;"></div>
                         <label id="miles_end_label" for="miles_end" style="display:none">Ending Miles</label><br />
-                        <input id="miles_end" name="miles_end" style="display:none" /><br /><br />
+                        <input id="miles_end" name="miles_end" class="form_input" style="display:none" /><br /><br />
 
                         <label id="total_cash_label" for="total_cash" style="display:none">Money Made Minus Hourly for the Shift</label><br />
-                        <input id="total_cash" name="total_cash" style="display:none" /><br /><br />
+                        <input id="total_cash" name="total_cash" class="form_input" style="display:none" /><br /><br />
                         <!-- ------------------------------------------------------------------ -->
 
                         <button type="submit" name="submit" value="submit" id="submitBtn" style="display:none;">Submit</button>
@@ -162,20 +163,20 @@ $url = "lower_directory";
                 </form>
                 <!--   -->
 
-                <form id="tips_form" style="width:100%;margin:0 auto;margin-top:10px;display:none;">
+                <form id="tips_form" style="width:100%;margin:0 auto;margin-top:50px;display:none;">
                     <div class="count_container" style="width:60%;margin-top:20px;margin:0 auto;padding-top:85px;text-align:center;">
                         <input id="month_02" hidden name="month_02" />
                         <input id="day_02" hidden name="day_02" />
                         <input id="year_02" hidden name="year_02" />
                         <input type="text" name="form_identification" id="form_identification_02" value="two" hidden />
 
-                        <input type="number" name="run_count01" id="runCountSpecific" hidden value="" />
-
+                        <input type="number" name="run_count01"  id="runCountSpecific" hidden value="" />
+                        <br /><br /><br />
                         <label for="tip_amount" id="tip_amount_label" >Tip for this run </label><br />
-                        <input type="text" name="tip_amount" id="tip_amount" class="tip_amount" /><br /><br />
+                        <input type="text" name="tip_amount" id="tip_amount" class="tip_amount form_input" /><br /><br />
 
                         <label for="ref_number" id="ref_number_label">Ticket #</label><br /><br />
-                        <input type="number" name="ref_number_input" id="ref_number" min="1" />
+                        <input type="number" name="ref_number_input" class="form_input" id="ref_number" min="1" />
 
 
                         <button type="submit" id="submit_tips" name="submit_tips" value="save_tips" style="width:200px;height:30px;margin-top:20px;">Save tip for run </button>
@@ -199,29 +200,31 @@ $url = "lower_directory";
 
         </div>
     </div>
-    <div class="footer_container" id="footer_container">
+
+        <div id="footer_container">
+
+        <div id="footer_information_block">
+
     <?php 
     include '../include/footer.php';
     ?>
+
     </div>
+ 
+    </div>
+
     </body>
 </html> 
 <script type="text/javascript">
     $('#startDay').click(function () {
-       $('#footer_container').css("margin-top" , "50px");
        $(this).css("display", "none");
+       $(this).parent().removeClass("start_btn");
+       $('#footer_container').css("margin-top" , "100px");
        $('form').trigger('reset');
-       $('#endDay').css("display", "block");
+       $('#day_display_container').css("display", "block");
        $('#step_one').css("display", "block");
 
        $('#day_display').css("display", "block");
-       $('#miles_begin_label').css("display", "block");
-       $('#miles_begin').css("display", "inline-block");
-       $('#payPerRun_label').css("display", "block");
-       $('#payPerRun').css("display", "inline-block");
-       $('#startingAmount_label').css("display", "block");
-       $('#startingAmount').css("display", "inline-block");
-
 
        $('#cont_btn').css("display", "block");
        $('#continue').css("display", "block");
@@ -257,26 +260,52 @@ $url = "lower_directory";
         $('.day_display').html(htmlString);
     });
 
+    $('#previous_button').click(function(){
+
+           $('#startDay').css("display", "block");
+
+       $('#footer_container').css("margin-top" , "300px");
+       $('#day_display_container').css("display", "none");
+       $('#step_one').css("display", "none");
+
+       $('#day_display').css("display", "none");
+
+       $('#cont_btn').css("display", "none");
+       $('#continue').css("display", "none");
+
+    });
+
     $('#continue').click(function(){
 
         $('#continue').css("display", "none");
         $('#step_one').css("display", "none");
         $('#day_display').css("display", "none");
-        $('#miles_begin_label').css("display", "none");
-        $('#miles_begin').css("display", "none");
-        $('#payPerRun_label').css("display", "none");
-        $('#payPerRun').css("display", "none");
-        $('#startingAmount_label').css("display", "none");
-        $('#startingAmount').css("display", "none");
+        $('#previous_button').css("display" , "none");
 
         $('#step_two').css("display", "block");
         $('#tips_form').css("display", "block");
         $('#endDayBtn').css("display" , "block");
+        $('#previous_button_02').css("display" , "block");
 
         var run_count = $('#runCountInput').val();
         $('.run_count').html(run_count);
         $('#runCountSpecific').val(run_count);
            
+    });
+
+    $('#previous_button_02').click(function(){
+
+        $('#continue').css("display", "block");
+        $('#step_one').css("display", "block");
+        $('#day_display').css("display", "block");
+        $('#previous_button').css("display" , "block");
+        $('#previous_button_02').css("display" , "none");
+
+        $('#step_two').css("display", "none");
+        $('#tips_form').css("display", "none");
+        $('#endDayBtn').css("display" , "none");
+
+
     });
 
     $('#add_run').click(function (e) {
@@ -308,11 +337,13 @@ $url = "lower_directory";
         $('#runCountSpecific').val(new_val);
     });
 
+
     $('#endDayBtn').click(function(){
 
         $('#endDayBtn').css("display", "none");
         $('#step_two').css("display", "none");
         $('#tips_form').css("display", "none");
+        $('#previous_button_02').css("display" , "none");
 
         $('#submitBtn').css("display", "block");
         $('#step_three').css("display", "block");
@@ -320,6 +351,22 @@ $url = "lower_directory";
         $('#miles_end').css("display" , "block");
         $('#total_cash_label').css("display" , "block");
         $('#total_cash').css("display" , "block");
+
+    });
+
+    $('#previous_button_03').click(function(){
+
+        $('#endDayBtn').css("display", "block");
+        $('#step_two').css("display", "block");
+        $('#tips_form').css("display", "block");
+        $('#previous_button_02').css("display" , "block");
+
+        $('#submitBtn').css("display", "none");
+        $('#step_three').css("display", "none");
+        $('#miles_end_label').css("display" , "none");
+        $('#miles_end').css("display" , "none");
+        $('#total_cash_label').css("display" , "none");
+        $('#total_cash').css("display" , "none");
 
     });
 
@@ -332,6 +379,7 @@ $url = "lower_directory";
         $('#step_two').css("display", "none");
         $('#step_three').css("display", "none");
         $('#tips_form').css("display", "none");
+        $('#footer_container').css("margin-top" , "300px");
 
     });
 </script>

@@ -26,14 +26,11 @@ $url = "top_directory";
 
 </head>
 <body>
-
   <?php
    
     include 'include/header.php';
 
   ?>
-
-
     <div class="body_container" style="width:100%;margin-top:25px;">
         <div class="login_container" style="width:50%;margin:0 auto;">
             <form id="login_form" action="content/login_function.php" style="text-align:center" method="post">
