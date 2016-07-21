@@ -32,7 +32,7 @@
 
     .show_username{
 
-        width:35%;
+        width:70%;
         float:right;
         text-align:right;
         color:white;
@@ -299,8 +299,7 @@
 
             width:100%;
             height:40px;
-            color:#1e1e1e;
-            
+            color:#1e1e1e;           
             padding-top:11px;
             font-weight:700;
             -webkit-border-radius: 10px;
@@ -348,8 +347,18 @@
         #footer_information_block{
 
             width:100%;
-            height:100px;       
+            height:100px;
+            box-sizing:border-box;       
             padding-top:20px;
+            
+        }
+
+        #footer_information_block_02{
+
+            width:100%;
+            height:65px;
+            border-top:1px solid white;
+            background-color:#333;
         }
 
 }

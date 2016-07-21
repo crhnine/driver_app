@@ -1,9 +1,60 @@
 ﻿@media screen and (min-width:737.9999px) and (max-width:1190px) {
     body {
+        
+
+
+    }    .header_container{
+
+        width:100%;
+        height:80px;
+        background-color:#333333;
+        font-weight:700;
+        font-size:1.8em;
+        color:white;
+        padding-top:21.5px;
+        border-bottom:3px solid #f85708;
+        -webkit-box-shadow: 0px 10px 5px 0px rgba(131,125,125,0.25);
+        -moz-box-shadow: 0px 10px 5px 0px rgba(131,125,125,0.25);
+        box-shadow: 0px 10px 5px 0px rgba(131,125,125,0.25);
+}
+    .form_input{
+
+        margin:10px 0px 10px 0px;
+        width:100%;
+        height:35px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border:1px solid #868686;
     }
 
+            #footer_container{
 
+            margin-top:300px;
+            width:100%;
+            height:100px;
+            background-color:#f85708;
+            color:white;
+            box-sizing:border-box;
+            
+        }
 
+        #footer_information_block{
+
+            width:100%;
+            height:100px;
+            box-sizing:border-box;       
+            padding-top:20px;
+            
+        }
+
+        #footer_information_block_02{
+
+            width:100%;
+            height:65px;
+            border-top:1px solid white;
+            background-color:#333;
+        }
 
 
 }

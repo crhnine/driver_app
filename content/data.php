@@ -3,12 +3,13 @@ session_start();
 include '../include/connect.php';
 $db = new mysqli($host, $username, $password, 'driver_app');
 $current_login = $_SESSION["username"];
-if($current_login === ""){
+if($current_login === Null){
 header('Location: ../index.php?login_confirm=Please login to continue.');
 }
 else{
-$url = "lower_directory";
+
 }
+$url = "lower_directory";
 //TO DO: BE SURE TO WRITE FUNCTIONALITY THAT ALLOWS TESTING OF LOGIN AND ACTUAL LOGOUT WITH SESSION UNSET
 ?>
 <!DOCTYPE html>
@@ -96,7 +97,7 @@ $url = "lower_directory";
                     <button id="previous_button" class="previous_button"><img src="../img/left_arrow.png" /></button><button id="continue" class="cont_btn"><img src="../img/right_arrow.png" /></button>
                 </div>
 
-                <div class="endBtn btn_container" style="width:95%;margin:0 auto;margin-bottom:65px;">
+                <div class="endBtn btn_container" style="width:95%;margin:0 auto;">
                     <button id="previous_button_02" class="previous_button" style="display:none;"><img src="../img/left_arrow.png" /></button><button id="endDayBtn" style="display:none;"><img src="../img/right_arrow.png" /></button>
                 </div>
                 <!--   -->
@@ -129,16 +130,17 @@ $url = "lower_directory";
                      
                             <div class="count_container">
                                 <div style="width:100%;margin:0 auto;margin-bottom:20px;margin-top:20px;">
-
+                                <div style="width:100%;height:65px;"></div>
+                                   <div style="width:100%;height:25px;text-align:center;margin-top:35px;">Run #</div>
                                     <div id="display_value" class="display_value">
                                     
                                     </div>
-                                    <button id="remove_run" class="tip_tracker"  style="margin-right:20%;"><img src="../img/minus.png"  /></button>
+                                    <button id="remove_run" class="tip_tracker"  style="margin-right:20%;margin-top:40px;"><img src="../img/minus.png"  /></button>
 
                                     <input type="number" name="run_count" id="runCountInput" value="1" hidden />
-                                    <div id="run_count" class="run_count" style="width:20%;height:80px;margin-right:20%;float:left;"></div>
+                                    <div id="run_count" class="run_count" style="width:20%;height:80px;margin-right:20%;margin-top:35px;float:left;"></div>
 
-                                    <button id="add_run" class="tip_tracker"><img src="../img/plus.png" /></button>
+                                    <button id="add_run" class="tip_tracker" style="margin-top:40px;"><img src="../img/plus.png" /></button>
     
                                 </div>
                             </div>
@@ -163,15 +165,17 @@ $url = "lower_directory";
                 </form>
                 <!--   -->
 
-                <form id="tips_form" style="width:100%;margin:0 auto;margin-top:50px;display:none;">
-                    <div class="count_container" style="width:60%;margin-top:20px;margin:0 auto;padding-top:85px;text-align:center;">
+                <form id="tips_form" style="width:100%;margin:0 auto;margin-top:10px;display:none;">
+                    <div class="count_container" style="width:60%;margin-top:20px;margin:0 auto;text-align:center;">
                         <input id="month_02" hidden name="month_02" />
                         <input id="day_02" hidden name="day_02" />
                         <input id="year_02" hidden name="year_02" />
+                        
+                        <br /><br /><br />
                         <input type="text" name="form_identification" id="form_identification_02" value="two" hidden />
 
                         <input type="number" name="run_count01"  id="runCountSpecific" hidden value="" />
-                        <br /><br /><br />
+                        <br /><br /><br /><br /><br />
                         <label for="tip_amount" id="tip_amount_label" >Tip for this run </label><br />
                         <input type="text" name="tip_amount" id="tip_amount" class="tip_amount form_input" /><br /><br />
 
@@ -203,13 +207,11 @@ $url = "lower_directory";
 
         <div id="footer_container">
 
-        <div id="footer_information_block">
 
     <?php 
     include '../include/footer.php';
     ?>
 
-    </div>
  
     </div>
 
