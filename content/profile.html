@@ -1,0 +1,152 @@
+﻿<?php
+
+
+session_start();
+
+include '../include/connect.php';
+
+$db = new mysqli($host, $username, $password, 'driver_app');
+
+$current_login = $_SESSION["username"];
+
+if($current_login === Null){
+
+header('Location: ../index.php?login_confirm=Please login to continue.');
+
+}
+
+else{
+
+
+
+}
+
+$url = "lower_directory";
+
+
+
+
+
+
+/* Update script UPDATE  `driver_app`.`user_login` SET  `password` =  'loginfordriverapp' WHERE  `user_login`.`id` =1;  */
+
+?>
+
+<!DOCTYPE html>
+<!-- Do not add code between these script tags -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<!--  ---------------------------------------------------  -->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title></title>
+    <link href="../layout/profile.css" type="text/css" rel="stylesheet" />
+
+
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="profile_main_container" style="width:100%;">
+
+        <div style="width:33%;height:200px;border:1px solid black;float:left;margin-bottom:25px;overflow:hidden;" id="profile_image_container">
+            <img id="profile_image" src="../img/portrait_pic.jpg" style="height:200px;width:100%;" alt="profile_picture" />
+
+        </div>
+
+        <div style="width:66%;height:400px;box-sizing:border-box;float:right;border:1px solid red;margin-bottom:25px;padding-top:50px;padding-left:25px;">
+
+            <div class="profile_information_container"><div class="profile_information">Name:  </div><button class="edit_profile_information"><img src="../img/pencil.png" class="pencil" style="width:15px;height:15px;" /></button></div>
+            <div class="profile_information_container"><div class="profile_information">City: </div><button class="edit_profile_information"><img src="../img/pencil.png" class="pencil" style="width:15px;height:15px;" /></button></div>
+            <div class="profile_information_container"><div class="profile_information">State: </div><button class="edit_profile_information"><img src="../img/pencil.png" class="pencil" style="width:15px;height:15px;" /></button></div>
+            <div class="profile_information_container"><div class="profile_information">Password: </div><button class="edit_profile_information"><img src="../img/pencil.png" class="pencil" style="width:15px;height:15px;" /></button></div>
+            
+
+        </div>
+
+        <div style="height:200px;width:95%;border:1px solid green;clear:both;padding-left:2.5%;margin:0 auto;">
+
+            <div class="toggle_information_container">
+                <div class="toggle_div">View overall statistics for a given day</div><div class="button_container"><button class="information_specific_button" id="view_overall_statistics">+</button></div>
+            </div>
+
+            <div class="toggle_information_container">
+                <div class="toggle_div">View tips for a given day</div><div class="button_container"><button class="information_specific_button"  id="view_specific_tips">+</button></div>
+            </div>
+
+            <div class="toggle_information_container">
+                <div class="toggle_div">What should this information include?</div><div class="button_container"><button class="information_specific_button"  id="view_other_information">+</button></div>
+            </div>
+            <div id="text_div">&nbsp;</div>
+
+            <!-- Daily statistics needs to have a search bar where user can type a date or select a date and lookup information regarding the money made and mileage for that day -->
+            <!-- Tips container needs to have search bar where user can type a date or select a date and lookup information regarding the runs and tips received on said runs for that day. -->
+            <!-- Third box needs to contain other information perhaps average tips in the user's city/average run count etc. -->
+
+        </div>
+		</div>
+</body>
+</html>
+
+<script>
+
+    $(window).load(function () {
+
+        if ($('#profile_image_container').height() > 400) {
+
+
+            $('#profile_image_container').height(400);
+            $('#profile_image').height(400);
+        }
+        //Note when the height gets as big as the information and set code to not allow height to go larger.
+        //400px x 400px
+    });
+
+    //Need to get the width of the profile_image_container and make the height equal the width in pixels as the width of the window changes.
+    var image_width = $('#profile_image_container').width();
+    var image_height = image_width + "px";
+    $('#profile_image_container').height(image_width);
+
+    var pic_width = $('#profile_image').width();
+    var pic_height = pic_width + "px";
+    $('#profile_image').height(pic_width);
+    
+        $(window).resize(function () {
+
+            //Assigning the container's width to variable
+            var new_image_width = $('#profile_image_container').width();
+            var new_profile_pic_width = $('#profile_image').width();
+
+            //Assigning the height of the container the value of the width
+            $('#profile_image_container').height(new_image_width);
+            image_height = $('#profile_image_container').height();
+
+            $('#profile_image').height(new_profile_pic_width);
+            profile_pic_height = $('#profile_image').height();
+
+            if (image_height > 400) {
+                //Ensuring that the height of the container does not exceed 400 pixels.
+                $('#profile_image_container').height(400);
+
+            }
+
+            if (profile_pic_height > 400) {
+
+                $('#profile_image').height(400);
+
+            }
+        });
+    
+
+    //Mobile max width 737px. Note the size of the div at this screen width and set code to not allow div to get smaller. 
+    //238px x 238px
+
+</script>

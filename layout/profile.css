@@ -1,0 +1,62 @@
+﻿body
+{
+}
+
+        button {
+
+            width:25px;
+            height:25px;
+            margin-bottom:10px;
+            float:left;
+            margin-top:15px;
+        }
+
+        .toggle_div{
+
+            width:90%;
+            height:25px;
+            box-sizing:border-box;
+            background-color:grey;
+            float:left;
+            border:1px solid #1e1e1e;
+            margin-bottom:5px;
+            margin-top:15px;
+
+        }
+
+        .button_container{
+
+            width:10%;
+            height:25px;
+            float:left;
+        }
+
+        .toggle_information_container{
+
+            color:white;
+        }
+
+        .profile_information_container{
+
+            width:85%;
+
+        }
+
+        .profile_information{
+
+            width:75%;
+            float:left;
+        }
+
+        .edit_profile_information{
+
+            background-color:transparent;
+            border:none;
+            float:left;
+
+        }
+
+        .information_specific_button{
+
+
+        }

@@ -32,7 +32,15 @@ $register_province = $_POST['register_province'];
 
 $register_city = $_POST['register_city'];
 
+$hash = hash('ripemd160',$register_password);
 
+$sql_post3 = "INSERT INTO $driver_table . $login_table ($login_column1, $login_column2, $login_column3, $login_column4) VALUES ('$register_username', '$hash', '$register_province', '$register_city')";
+
+$db_post3 = mysql_query($sql_post3)or die('Query "' . $sql_post3. '" failed: ' . mysql_error());
+
+
+
+header('Location: ../index.php');
 
 //$username_check = "SELECT $login_column1 FROM $login_table WHERE $login_column1 = '$register_username'";
 
@@ -59,12 +67,6 @@ $register_city = $_POST['register_city'];
 
 
 
-$sql_post3 = "INSERT INTO $driver_table . $login_table ($login_column1, $login_column2, $login_column3, $login_column4) VALUES ('$register_username', '$register_password', '$register_province', '$register_city')";
 
-$db_post3 = mysql_query($sql_post3)or die('Query "' . $sql_post3. '" failed: ' . mysql_error());
-
-
-
-header('Location: ../index.php');
 
 ?>

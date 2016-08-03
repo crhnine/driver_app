@@ -70,7 +70,7 @@ $url = "top_directory";
 
         <div class="login_container" style="width:50%;margin:0 auto;">
 
-            <form id="login_form" action="content/login_function.php" style="text-align:center" method="post">
+            <form id="login_form" action="submissions/login_function.php" style="text-align:center" method="post">
 
 
 

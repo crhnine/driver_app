@@ -2,7 +2,7 @@
         <!--  Hello username float right  -->
         <?php
 
-        if($current_login !== ""){
+        if($current_login !== " "){
             if($url === "lower_directory"){
 
             

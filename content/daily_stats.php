@@ -32,5 +32,3 @@ while($row = $result->fetch_assoc()){
 //TO DO: CREATE "DELETE" BUTTON WITH MYSQLI UPDATE
 
 ?>
-
-<script type="text/javascript"></script>

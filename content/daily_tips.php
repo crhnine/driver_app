@@ -14,7 +14,7 @@ $tips_year = date(Y);
 
     $sql = <<<SQL
     SELECT *
-    FROM `tip_per_run` WHERE username = '$current_login' AND month = '$tips_month' AND day = '$tips_day' AND year = '$tips_year' ORDER BY id DESC
+    FROM `$tips_table` WHERE username = '$current_login' AND month = '$tips_month' AND day = '$tips_day' AND year = '$tips_year' ORDER BY id DESC
 SQL;
 
 if(!$result = $db->query($sql)){

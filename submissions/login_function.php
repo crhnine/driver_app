@@ -1,69 +1,36 @@
+<?php session_start(); ?>
+<?php include '../include/connect.php'; ?>
+<?php 
+$con = mysql_connect("$host", "$username", "$password")or die("cannot connect");
+$db = mysql_select_db("$db_name")or die("can not select DB");
+
+?>
 <?php
+$_SESSION["username"] = Null;
+   $login_form_username = $_POST['login_form_username'];
+   $login_form_password = $_POST['login_form_password'];
+
+   $hash2 = hash('ripemd160',$login_form_password);
+
+   $verify_login = "SELECT * FROM user_login WHERE username = '$login_form_username' AND password = '$hash2'";
+   $login_verified = mysql_query($verify_login)or die(mysql_error());
 
 
-
-session_start();
-
+   while($info = mysql_fetch_array($login_verified)){
 
 
-$username_login_check = $_SESSION['username'];
+   $num_login = mysql_num_rows($login_verified);
+   $username = $info['username'];
+          if($num_login == 1){
+              session_start();
+              $_SESSION["username"] = $username; 
+              header('Location: data.php');
+            }
+        else{
+              header('Location: ../index.php?confirm=Login was unsuccessful Please try again');
+            }
 
-if($username_login_check != Null){
-
-
-
-header('Location: legithtml.com/content/data.php');
-
-}
-
-
-
-include '../include/connect.php';
-
-$db = new mysqli($host, $username, $password, 'driver_app');
-
-
-
-if($db->connect_errno > 0){
-
-    die('Unable to connect to database [' . $db->connect_error . ']');
-
-}
-
-
-
-$login_username = $_POST['login_form_username'];
-
-$login_password = $_POST['login_form_password'];
-
-
-/* For security purposes all sql statement values should be placed as variable and stored elsewhere  */
-    $login_sql = "SELECT * FROM $login_table WHERE $login_column1 = '$login_username' AND $login_column2 = '$login_password'";
-
-
-
-if(!$result = $db->query($login_sql)){
-
-    die('There was an error running the query [' . $db->error . ']');
-
-}
-
-
-
-while($user_row = $result->fetch_assoc()){
-
-
-
-$_SESSION['username'] = $user_row['username'];
-
-$_SESSION['id'] = $user_row['id'];
-
-$_SESSION['province'] = $user_row['province'];
-
-$_SESSION['city'] = $user_row['city'];
-
-}
-
-
+};
+   
 
 ?>
