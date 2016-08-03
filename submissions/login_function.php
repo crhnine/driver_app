@@ -18,17 +18,12 @@ $_SESSION["username"] = Null;
 
    while($info = mysql_fetch_array($login_verified)){
 
-
-   $num_login = mysql_num_rows($login_verified);
    $username = $info['username'];
-          if($num_login == 1){
               session_start();
               $_SESSION["username"] = $username; 
-              header('Location: data.php');
-            }
-        else{
-              header('Location: ../index.php?confirm=Login was unsuccessful Please try again');
-            }
+              header('Location: ../content/data.php');
+           
+
 
 };
    
